@@ -1,0 +1,61 @@
+        <div class="page-header">
+          <h1>Mobile</h1>
+        </div>
+        <!--  class="form-horizontal" -->
+        <form role="form" ng-submit="createMobileCase()">
+          <!-- client type -->
+          <div class="form-group">
+            <label for="jsid-mobile-client-type">Client Type</label>
+            <select class="form-control" ng-model="mobileSubItem.clientType" id="jsid-mobile-client-type">
+              <option value="personal">Personal</option>
+              <option value="business">Business</option>
+            </select>
+          </div>
+          <!-- voice minute -->
+          <div class="form-group">
+            <label for="jsid-mobile-voice-minutes">Voice Minutes</label>
+            <select class="form-control" ng-model="mobileSubItem.voiceMinutes" id="jsid-mobile-voice-minutes">
+              <option value="minute1">Less than 500</option>
+              <option value="minute2">500 - 1,000</option>
+              <option value="minute3">1,000 - 2,000</option>
+              <option value="minute4">2,000 - 4,000</option>
+              <option value="minute5">4,000+</option>
+            </select>
+          </div>
+          <!-- data volume -->
+          <div class="form-group">
+            <label for="jsid-mobile-data-volume">Data</label>
+            <select class="form-control" ng-model="mobileSubItem.dataVolume" id="jsid-mobile-data-volume">
+              <option value="data1">Less than 200 MB</option>
+              <option value="data2">200 - 500 MB</option>
+              <option value="data3">500MB - 1GB</option>
+              <option value="data4">1GB - 5GB</option>
+              <option value="data5">5GB+</option>
+            </select>
+          </div>
+          <!-- no. of device -->
+          <div class="form-group">
+            <label for="jsid-mobile-device-count">No. of Devices</label>
+            <select class="form-control" ng-model="mobileSubItem.deviceCounts" id="jsid-mobile-device-count">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <!-- remarks -->
+          <div class="form-group">
+            <label for="jsid-case-remarks">Additional Request</label>
+            <textarea id="jsid-case-remarks" ng-model="caseItem.remarks" class="form-control" rows="3">Please let us know whether you have other needs.</textarea>
+          </div>
+          <p><hr></p>
+          <div class="row">
+            <div class="col-xs-6">
+              <a href="#/list" class="btn btn-default" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+            </div>
+            <div class="col-xs-6">
+              <button class="btn btn-primary pull-right" type="submit">	Continue &raquo;</button>
+            </div>
+          </div>
+          <p>&nbsp;</p>
+        </form>

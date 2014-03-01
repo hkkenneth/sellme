@@ -1,0 +1,86 @@
+        <div class="page-header">
+          <h1>Travel Insurance</h1>
+        </div>
+<!--
+  destination: { type: String, required: true },
+  dateStr: { type: String, required: true },
+  tripType: { type: String, required: true },  // Free, Tour, Cruise
+  adultcount: { type: Number, required: true },
+  childcount: { type: Number, required: true },
+
+-->
+
+        <!--  class="form-horizontal" -->
+        <form role="form" ng-submit="createInsuranceCase()">
+          <!-- destination -->
+          <div class="form-group">
+            <label for="jsid-insurance-destination">Destination</label>
+            <select class="form-control" ng-model="insuranceSubItem.destination" id="jsid-insurance-destination">
+              <option value="destChina">Macau/China (Including Taiwan)</option>
+              <option value="destAsia">Asian Countries</option>
+              <option value="destUSA">USA</option>
+              <option value="destOther">Other parts of the world</option>
+            </select>
+          </div>
+          <!-- Date -->
+          <div class="form-group">
+            <label for="jsid-insurance-dateStr">Travel Date</label>
+            <input type="text" ng-model="insuranceSubItem.datestr" class="form-control" id="jsid-insurance-dateStr" placeholder="Date of Travel (Start - End)">
+          </div>
+          <!-- Trip type -->
+          <div class="form-group">
+            <label for="jsid-insurance-tripType">Type of trip</label>
+            <select class="form-control" ng-model="insuranceSubItem.triptype" id="jsid-insurance-tripType">
+              <option value="typeSelf">Self</option>
+              <option value="typeGroup">Group Tour</option>
+              <option value="typeCruise">Cruise</option>
+            </select>
+          </div>
+          <!-- No. of Adults -->
+          <div class="form-group">
+            <label for="jsid-insurance-adultCount">No. of Adults</label>
+            <select class="form-control" ng-model="insuranceSubItem.adultcount" id="jsid-insurance-adultCount">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </div>
+          <!-- No. of Adults -->
+          <div class="form-group">
+            <label for="jsid-insurance-childCount">No. of Children</label>
+            <select class="form-control" ng-model="insuranceSubItem.childcount" id="jsid-insurance-childCount">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </div>
+          <!-- remarks -->
+          <div class="form-group">
+            <label for="jsid-case-remarks">Additional Request</label>
+            <textarea id="jsid-case-remarks" ng-model="caseItem.remarks" class="form-control" rows="3">Please let us know whether you have other needs.</textarea>
+          </div>
+          <p><hr></p>
+          <div class="row">
+            <div class="col-xs-6">
+              <a href="#/list" class="btn btn-default" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+            </div>
+            <div class="col-xs-6">
+              <button class="btn btn-primary pull-right" type="submit">Continue &raquo;</button>
+            </div>
+          </div>
+          <p>&nbsp;</p>
+        </form>

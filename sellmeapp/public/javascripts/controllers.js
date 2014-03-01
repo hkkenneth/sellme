@@ -12,13 +12,37 @@ function CaseItemCtrl($scope, $routeParams, Case) {
   $scope.vote = function() {};
 }
 
+function generalCheck(caseItem) {
+  return ((caseItem.userid.length != 0)
+    && (caseItem.casetitle.length != 0)
+    && (caseItem.casetype.length != 0));
+}
+
 // Creating a new case
 function CaseNewCtrl($scope, $location, Case) {
   // Template of an item?
   $scope.caseItem = {
-    userid: '',
-    casetype: '',
-    casetitle:  '',
+    userid: 'temp_user'
+    , casetype: ''
+    , casetitle:  ''
+    , remarks: ''
+  };
+
+  $scope.mobileSubItem = {
+    clientType: 'personal'
+    , serviceType: ''
+    , planType: ''
+    , voiceMinutes: 'minute1'
+    , dataVolume: 'data1'
+    , deviceCounts: 1
+  };
+
+  $scope.insuranceSubItem = {
+    destination: 'destChina'
+    , datestr: ''
+    , triptype: 'typeSelf'
+    , adultcount: 1
+    , childcount: 0
   };
 
   // Seems somewhere that executes on client?
@@ -26,13 +50,53 @@ function CaseNewCtrl($scope, $location, Case) {
   //   $scope.caseItem.choices.push({ text: '' });
   // };
 
+  $scope.createInsuranceCase = function() {
+    var caseItem = $scope.caseItem;
+    var insuranceItem = $scope.insuranceSubItem;
+    console.log('insurance item');
+    caseItem.casetype = 'insurance';
+    caseItem.casetitle = 'Travel Insurance for x days';
+    var verifyResult = generalCheck(caseItem);
+    if (verifyResult) {
+      caseItem.insurancecontent = insuranceItem;
+      var newCase = new Case(caseItem);
+      newCase.$save(function(p, resp) {
+        if(!p.error) {
+          // redirect to list?
+          console.log(p);
+          console.log(resp);
+          $location.path('list');
+        } else {
+          alert('Could not create the case');
+        }
+      });
+    }
+  };
+
+  $scope.createMobileCase = function() {
+    var caseItem = $scope.caseItem;
+    var mobileItem = $scope.mobileSubItem;
+    caseItem.casetype = 'mobile';
+    caseItem.casetitle = 'Mobile Service Plan for user';
+    var verifyResult = generalCheck(caseItem);
+    if (verifyResult) {
+      caseItem.mobilecontent = mobileItem;
+      var newCase = new Case(caseItem);
+      newCase.$save(function(p, resp) {
+        if(!p.error) {
+          // redirect to list?
+          $location.path('list');
+        } else {
+          alert('Could not create the case');
+        }
+      });
+    }
+  };
+
   $scope.createCase = function() {
     var caseItem = $scope.caseItem;
-
-    // some verification
-    if ((caseItem.userid.length != 0)
-      && (caseItem.casetitle.length != 0)
-      && (caseItem.casetype.length != 0)) {
+    var verifyResult = generalCheck(caseItem);
+    if  (verifyResult) {
         var newCase = new Case(caseItem);
         newCase.$save(function(p, resp) {
           if(!p.error) {
@@ -43,31 +107,5 @@ function CaseNewCtrl($scope, $location, Case) {
           }
         });
     }
-    // if(caseItem.question.length > 0) {
-    //   var choiceCount = 0;
-    //   for(var i = 0, ln = caseItem.choices.length; i < ln; i++) {
-    //     var choice = caseItem.choices[i];        
-    //     if(choice.text.length > 0) {
-    //       choiceCount++
-    //     }
-    //   }
-    //   if(choiceCount > 1) {
-    //     // Create the object
-    //     var newCase = new Case(caseItem); 
-    //     // What's p      
-    //     newCase.$save(function(p, resp) {
-    //       if(!p.error) {
-    //         // redirect to list?
-    //         $location.path('list');
-    //       } else {
-    //         alert('Could not create the case');
-    //       }
-    //     });
-    //   } else {
-    //     alert('You must enter at least two choices');
-    //   }
-    // } else {
-    //   alert('You must enter a question');
-    // }
   };
 }

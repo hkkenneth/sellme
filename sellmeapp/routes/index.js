@@ -97,14 +97,34 @@ exports.listCase = function(req, res) {
 
 // JSON API for creating a new case
 exports.createCase = function(req, res) {
-  var reqBody = req.body,
-    caseObj = {userid: reqBody.userid, casetitle: reqBody.casetitle, casetype: reqBody.casetype};
-  //     choices = reqBody.choices.filter(function(v) { return v.text != ''; }),
+  var reqBody = req.body
+    , caseObj = {
+        userid: reqBody.userid
+      , casetitle: reqBody.casetitle
+      , casetype: reqBody.casetype
+      , postdate: 'date'
+      , remarks: reqBody.remarks
+    };
+  console.log(reqBody);
+  switch (caseObj.casetype) {
+    case 'insurance':
+      caseObj.insurancecontent = [reqBody.insurancecontent];
+      break;
+    case 'mobile':
+      caseObj.mobilecontent = [reqBody.mobilecontent];
+      break;
+    case 'boardband':
+      break;
+    default:
+      break;
+  }
+  //choices = reqBody.choices.filter(function(v) { return v.text != ''; }),
   var caseItem = new Case(caseObj);
   caseItem.save(function(err, doc) {
     if(err || !doc) {
-      throw 'Error';
+      res.json({error: true});
     } else {
+      console.log(doc);
       res.json(doc);
     }
   });
