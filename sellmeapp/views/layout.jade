@@ -5,11 +5,56 @@ html(lang='en', ng-app='sellmeapp')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/mau.css')
+    link(rel='stylesheet', href='/stylesheets/maudefault.css')
+    link(rel='stylesheet', href='/stylesheets/maufonts.css')
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Varela+Round')
     script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js')
     script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
     script(src='/javascripts/app.js')
     script(src='/javascripts/services.js')
     script(src='/javascripts/controllers.js')
-  block content
+    script(src='/javascripts/mau.js')
+  body
+    #wrapper
+      #mau-header-wrapper
+        #mau-header.mau-container
+          #logo
+            h1
+              a(href='#') Sell Me
+          #social
+            ul.contact
+              li
+                a.icon.icon-twitter(href='#')
+                  span Twitter
+              li
+                a.icon.icon-facebook(href='#')
+                  span
+              li
+                a.icon.icon-dribbble(href='#')
+                  span Pinterest
+              li
+                a.icon.icon-tumblr(href='#')
+                  span Google+
+              li
+                a.icon.icon-rss(href='#')
+                  span Pinterest
+        #menu.mau-container
+          ul
+            li.current_page_item
+              a(href='#', accesskey='1', title='') Homepage
+            li
+              a(href='#', accesskey='1', title='') My Post
+            li
+              a(href='#', accesskey='2', title='') Special Offer
+            li
+              a(href='#', accesskey='3', title='') About Us
+            li
+              a(href='#', accesskey='4', title='') Login
+            li
+              a(href='#', accesskey='5', title='') Contact Us
+      block content
+      #footer
+        p Design By kelvin! Cheers

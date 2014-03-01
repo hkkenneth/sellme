@@ -50,6 +50,10 @@ app.get('/', routes.index);
 app.get('/hello', routes.hello);
 app.get('/users', user.list);
 
+// Mau
+app.get('/homepage', routes.homepage);
+app.get('/listcases', routes.cases);
+
 // DB test read
 app.get('/userlist', routes.userlist(db));
 // DB test write

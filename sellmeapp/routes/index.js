@@ -59,6 +59,14 @@ exports.adduser = function(db) {
     }
 }
 
+// Mau's static
+exports.homepage = function(req, res){
+  res.render('homepage', { title: 'Sell Me!' });
+};
+exports.cases = function(req, res){
+  res.render('cases', { title: 'Sell Me!' });
+};
+
 var mongoose = require('mongoose');
 var db = mongoose.createConnection('localhost', 'tempsellme');
 
