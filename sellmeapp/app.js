@@ -56,6 +56,11 @@ app.get('/userlist', routes.userlist(db));
 app.get('/newuser', routes.newuser);
 app.post('/adduser', routes.adduser(db));
 
+// Polls Demo
+app.get('/polls/polls', routes.list);
+app.get('/polls/:id', routes.poll);
+app.post('/polls', routes.create);
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
