@@ -89,18 +89,17 @@ exports.listCase = function(req, res) {
 
 // JSON API for creating a new case
 exports.createCase = function(req, res) {
-  // var reqBody = req.body,
+  var reqBody = req.body,
+    caseObj = {userid: reqBody.userid, casetitle: reqBody.casetitle, casetype: reqBody.casetype};
   //     choices = reqBody.choices.filter(function(v) { return v.text != ''; }),
-  //     pollObj = {question: reqBody.question, choices: choices};
-  // var poll = new Poll(pollObj);
-  // poll.save(function(err, doc) {
-  //   if(err || !doc) {
-  //     throw 'Error';
-  //   } else {
-  //     res.json(doc);
-  //   }
-  // });
-  res.json({error:false});
+  var caseItem = new Case(caseObj);
+  caseItem.save(function(err, doc) {
+    if(err || !doc) {
+      throw 'Error';
+    } else {
+      res.json(doc);
+    }
+  });
 };
 
 // Polls Demo

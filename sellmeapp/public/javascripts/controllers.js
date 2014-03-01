@@ -16,31 +16,24 @@ function CaseItemCtrl($scope, $routeParams, Case) {
 function CaseNewCtrl($scope, $location, Case) {
   // Template of an item?
   $scope.caseItem = {
-    question: '',
-    choices: [ { text: '' }, { text: '' }, { text: '' }]
+    userid: '',
+    casetype: '',
+    casetitle:  '',
   };
 
   // Seems somewhere that executes on client?
-  $scope.addChoice = function() {
-    $scope.caseItem.choices.push({ text: '' });
-  };
+  // $scope.addChoice = function() {
+  //   $scope.caseItem.choices.push({ text: '' });
+  // };
 
   $scope.createCase = function() {
     var caseItem = $scope.caseItem;
 
     // some verification
-    if(caseItem.question.length > 0) {
-      var choiceCount = 0;
-      for(var i = 0, ln = caseItem.choices.length; i < ln; i++) {
-        var choice = caseItem.choices[i];        
-        if(choice.text.length > 0) {
-          choiceCount++
-        }
-      }
-      if(choiceCount > 1) {
-        // Create the object
-        var newCase = new Case(caseItem); 
-        // What's p      
+    if ((caseItem.userid.length != 0)
+      && (caseItem.casetitle.length != 0)
+      && (caseItem.casetype.length != 0)) {
+        var newCase = new Case(caseItem);
         newCase.$save(function(p, resp) {
           if(!p.error) {
             // redirect to list?
@@ -49,11 +42,32 @@ function CaseNewCtrl($scope, $location, Case) {
             alert('Could not create the case');
           }
         });
-      } else {
-        alert('You must enter at least two choices');
-      }
-    } else {
-      alert('You must enter a question');
     }
+    // if(caseItem.question.length > 0) {
+    //   var choiceCount = 0;
+    //   for(var i = 0, ln = caseItem.choices.length; i < ln; i++) {
+    //     var choice = caseItem.choices[i];        
+    //     if(choice.text.length > 0) {
+    //       choiceCount++
+    //     }
+    //   }
+    //   if(choiceCount > 1) {
+    //     // Create the object
+    //     var newCase = new Case(caseItem); 
+    //     // What's p      
+    //     newCase.$save(function(p, resp) {
+    //       if(!p.error) {
+    //         // redirect to list?
+    //         $location.path('list');
+    //       } else {
+    //         alert('Could not create the case');
+    //       }
+    //     });
+    //   } else {
+    //     alert('You must enter at least two choices');
+    //   }
+    // } else {
+    //   alert('You must enter a question');
+    // }
   };
 }
