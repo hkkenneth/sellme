@@ -18,7 +18,7 @@
           <!-- loop -->
           <ul ng-switch-default>
             <li ng-repeat="caseItem in caseItems | filter:query">
-              <a href="#/case/{{caseItem._id}}">{{caseItem.question}}</a>
+              <a href="#/case/{{caseItem._id}}">{{caseItem.casetype}}: {{caseItem.casetitle}} (by user: {{caseItem.userid}} )</a>
             </li>
           </ul>
         </div>
