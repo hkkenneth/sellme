@@ -7,10 +7,6 @@ exports.index = function(req, res){
   res.render('index', { title: 'Pick a category to get started' });
 };
 
-exports.hello = function(req, res){
-  res.render('hello', { title: 'Hello, World!' });
-};
-
 // running a wrapper function to which we pass our db variable, and then doing a page render just like the other two "exports" in this route file. 
 exports.userlist = function(db) {
     return function(req, res) {

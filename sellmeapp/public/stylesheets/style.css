@@ -23,3 +23,54 @@ body { padding-top: 50px; }
   background-color: lightblue;
   text-align: right;
 }
+
+
+/* By Kenneth, for the 'add posts' panel */
+div.sell-me-add-button-div{
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+div.sell-me-add-button-div div {
+  position: absolute;
+  font-size: 22pt;
+  color: white;
+  display: none;
+}
+
+div.sell-me-add-button-div.left div {
+  right: 10px;
+}
+
+div.sell-me-add-button-div.right div {
+  left: 10px;
+}
+
+div.sell-me-add-button-div.top div {
+  bottom: 20px;
+}
+
+div.sell-me-add-button-div.bottom div {
+  top: 20px;
+}
+
+div.sell-me-add-button-div:hover div {
+  display: block;
+}
+
+div.sell-me-add-button-div.mobile {
+  background-image: url(/images/mobile.png);
+}
+
+div.sell-me-add-button-div.insurance {
+  background-image: url(/images/insurance.jpg);
+}
+
+div.sell-me-add-button-div.boardband {
+  background-image: url(/images/boardband.jpg);
+}
+
+div.sell-me-add-button-div.other {
+  background-image: url(/images/others.jpg);
+}
