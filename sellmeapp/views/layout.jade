@@ -23,7 +23,7 @@ html(lang='en', ng-app='sellmeapp')
         #mau-header.mau-container
           #logo
             h1
-              a(href='#') Sell Me
+              a(href='#') Sell Me - Offer you when you want it
           #social
             ul.contact
               li
@@ -44,17 +44,17 @@ html(lang='en', ng-app='sellmeapp')
         #menu.mau-container
           ul
             li.current_page_item
-              a(href='#', accesskey='1', title='') Homepage
+              a(href='/homepage', accesskey='1', title='') Homepage
             li
-              a(href='#', accesskey='1', title='') My Post
+              a(href='/#/new', accesskey='2', title='') Create Post
             li
-              a(href='#', accesskey='2', title='') Special Offer
+              a(href='/#/list', accesskey='3', title='') My Posts
             li
-              a(href='#', accesskey='3', title='') About Us
+              a(href='#', accesskey='4', title='') Special Offer
             li
-              a(href='#', accesskey='4', title='') Login
+              a(href='#', accesskey='5', title='') About Us
             li
-              a(href='#', accesskey='5', title='') Contact Us
+              a(href='#', accesskey='6', title='') Contact Us
       block content
-      #footer
+      #mau-footer
         p Design By kelvin! Cheers
