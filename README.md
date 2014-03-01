@@ -28,3 +28,42 @@ db.usercollection.insert(newstuff);
 
 # read the records
 db.usercollection.find().pretty();
+
+
+# MONGO SELL ME DB:
+db.casesCollection.insert({ "question" : "test question" });
+
+
+# schema
+# insuranceSchema
+{
+  dest: '',
+  date: '',
+  adultcount: 0,
+  childcount: 0
+}
+
+db.cases.insert({
+  'userid': 'user_1',
+  'casetype': 'insurance',
+  'casetitle': 'title',
+  'insurancecontent': {
+    'dest': '',
+    'date': '',
+    'adultcount': 0,
+    'childcount': 0
+  }
+});
+
+
+db.cases.insert({
+  'userid': 'user_2',
+  'casetype': 'insurance',
+  'casetitle': 'title 2',
+  'insurancecontent': {
+    'dest': '',
+    'date': '',
+    'adultcount': 0,
+    'childcount': 0
+  }
+});

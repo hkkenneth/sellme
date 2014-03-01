@@ -1,8 +1,8 @@
-angular.module('polls', ['pollServices'])
+angular.module('sellmeapp', ['caseServices'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.
-      when('/polls', { templateUrl: 'partials/list.html', controller: PollListCtrl }).
-      when('/poll/:pollId', { templateUrl: 'partials/item.html', controller: PollItemCtrl }).
-      when('/new', { templateUrl: 'partials/new.html', controller: PollNewCtrl }).
-      otherwise({ redirectTo: '/polls' });
+      when('/list', { templateUrl: 'partials/list.html', controller: CaseListCtrl }).
+      when('/case/:caseId', { templateUrl: 'partials/item.html', controller: CaseItemCtrl }).
+      when('/new', { templateUrl: 'partials/new.html', controller: CaseNewCtrl }).
+      otherwise({ redirectTo: '/list' });
   }]);

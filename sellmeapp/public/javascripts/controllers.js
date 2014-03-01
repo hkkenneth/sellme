@@ -1,58 +1,52 @@
-// Managing the poll list
-//function PollListCtrl($scope) {
-//  $scope.polls = [];
-//}
-
-function PollListCtrl($scope, Poll) {
-  $scope.polls = Poll.query();
+// Managing the list of cases
+function CaseListCtrl($scope, Case) {
+  // $scope.caseItems = model?
+  $scope.caseItems = Case.query();
 }
 
-// Voting / viewing poll results
-//function PollItemCtrl($scope, $routeParams) {
-//  $scope.poll = {};
-//  $scope.vote = function() {};
-//}
-function PollItemCtrl($scope, $routeParams, Poll) {
-  $scope.poll = Poll.get({pollId: $routeParams.pollId});
+// Viewing case
+function CaseItemCtrl($scope, $routeParams, Case) {
+  // $routeParams.caseId ----> :caseId
+  // i.e. select
+  $scope.caseItem = Case.get({caseId: $routeParams.caseId});
   $scope.vote = function() {};
 }
 
-// Creating a new poll
-//function PollNewCtrl($scope) {
-//  $scope.poll = {
-//    question: '',
-//    choices: [{ text: '' }, { text: '' }, { text: '' }]
-//  };
-//  $scope.addChoice = function() {
-//    $scope.poll.choices.push({ text: '' });
-//  };
-//  $scope.createPoll = function() {};
-//}
-function PollNewCtrl($scope, $location, Poll) {
-  $scope.poll = {
+// Creating a new case
+function CaseNewCtrl($scope, $location, Case) {
+  // Template of an item?
+  $scope.caseItem = {
     question: '',
     choices: [ { text: '' }, { text: '' }, { text: '' }]
-  };  
-  $scope.addChoice = function() {
-    $scope.poll.choices.push({ text: '' });
   };
-  $scope.createPoll = function() {
-    var poll = $scope.poll;
-    if(poll.question.length > 0) {
+
+  // Seems somewhere that executes on client?
+  $scope.addChoice = function() {
+    $scope.caseItem.choices.push({ text: '' });
+  };
+
+  $scope.createCase = function() {
+    var caseItem = $scope.caseItem;
+
+    // some verification
+    if(caseItem.question.length > 0) {
       var choiceCount = 0;
-      for(var i = 0, ln = poll.choices.length; i < ln; i++) {
-        var choice = poll.choices[i];        
+      for(var i = 0, ln = caseItem.choices.length; i < ln; i++) {
+        var choice = caseItem.choices[i];        
         if(choice.text.length > 0) {
           choiceCount++
         }
-      }    
+      }
       if(choiceCount > 1) {
-        var newPoll = new Poll(poll);       
-        newPoll.$save(function(p, resp) {
-          if(!p.error) { 
-            $location.path('polls');
+        // Create the object
+        var newCase = new Case(caseItem); 
+        // What's p      
+        newCase.$save(function(p, resp) {
+          if(!p.error) {
+            // redirect to list?
+            $location.path('list');
           } else {
-            alert('Could not create poll');
+            alert('Could not create the case');
           }
         });
       } else {

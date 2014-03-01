@@ -59,12 +59,52 @@ exports.adduser = function(db) {
     }
 }
 
+var mongoose = require('mongoose');
+var db = mongoose.createConnection('localhost', 'tempsellme');
 
+// Sell Me code
+var CaseSchema = require('../models/Case.js').CaseSchema;
+// The first param is the collection name
+var Case = db.model('cases', CaseSchema);
+
+// route handlers
+// JSON API for list of cases
+exports.listCases = function(req, res) {
+  Case.find({}, {}, function(error, caseItems) {
+    res.json(caseItems);
+  });
+};
+
+// JSON API for getting a single case
+exports.listCase = function(req, res) {
+  var caseId = req.params.id;
+  Case.findById(caseId, '', { lean: true }, function(err, caseItem) {
+    if(caseItem) {
+      res.json(caseItem);
+    } else {
+      res.json({error:true});
+    }
+  });
+};
+
+// JSON API for creating a new case
+exports.createCase = function(req, res) {
+  // var reqBody = req.body,
+  //     choices = reqBody.choices.filter(function(v) { return v.text != ''; }),
+  //     pollObj = {question: reqBody.question, choices: choices};
+  // var poll = new Poll(pollObj);
+  // poll.save(function(err, doc) {
+  //   if(err || !doc) {
+  //     throw 'Error';
+  //   } else {
+  //     res.json(doc);
+  //   }
+  // });
+  res.json({error:false});
+};
 
 // Polls Demo
 
-var mongoose = require('mongoose');
-var db = mongoose.createConnection('localhost', 'tempsellme');
 var PollSchema = require('../models/Poll.js').PollSchema;
 var Poll = db.model('polls', PollSchema);
 

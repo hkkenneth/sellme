@@ -61,6 +61,14 @@ app.get('/polls/polls', routes.list);
 app.get('/polls/:id', routes.poll);
 app.post('/polls', routes.create);
 
+// These are for APIs, not really related to Angular JS
+// Sell Me code
+// Looks like the author purposely made the 2 endpoints sharing the same prefix...
+// Also see public/javascripts/services.js
+app.get('/cases/list', routes.listCases);
+app.get('/cases/:id', routes.listCase);
+app.post('/cases', routes.createCase);
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
