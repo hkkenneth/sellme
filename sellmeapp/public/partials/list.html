@@ -21,13 +21,46 @@
               <div ng-switch on="caseItem.casetype">
                 <!-- mobile start-->
                 <div ng-switch-when="mobile">
+
                   <div class="info-box-row">
                     <div class="info-home-row-icon">
                     </div>
                     <div class="info-box-row-data">
-                        Mobile
+                      <span ng-switch on="caseItem.mobilecontent[0].clientType">
+                        <span ng-switch-when="personal">Personal</span>
+                        <span ng-switch-when="business">Business</span>
+                      </span>
                     </div>
                   </div>
+
+                  <div class="info-box-row">
+                    <div class="info-home-row-icon">
+                    </div>
+                    <div class="info-box-row-data">
+                      <span ng-switch on="caseItem.mobilecontent[0].voiceMinutes">
+                        <span ng-switch-when="minute1">Less than 500</span>
+                        <span ng-switch-when="minute2">500 - 1,000</span>
+                        <span ng-switch-when="minute3">1,000 - 2,000</span>
+                        <span ng-switch-when="minute4">2,000 - 4,000</span>
+                        <span ng-switch-when="minute5">4,000+</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="info-box-row">
+                    <div class="info-home-row-icon">
+                    </div>
+                    <div class="info-box-row-data">
+                      <span ng-switch on="caseItem.mobilecontent[0].dataVolume">
+                        <span ng-switch-when="data1">Less than 200 MB</span>
+                        <span ng-switch-when="data2">200 - 500 MB</span>
+                        <span ng-switch-when="data3">500MB - 1GB</span>
+                        <span ng-switch-when="data4">1GB - 5GB</span>
+                        <span ng-switch-when="data5">5GB+</span>
+                      </span>
+                    </div>
+                  </div>
+
                 </div>
                 <!-- mobile end-->
                 <!-- insurance start-->
@@ -78,15 +111,7 @@
                 <!-- Switch by type -->
                 <div ng-switch on="caseItem.casetype">
                   <!-- mobile start-->
-                  <div ng-switch-when="mobile">
-                    <div class="info-box-row">
-                      <div class="info-home-row-icon">
-                      </div>
-                      <div class="info-box-row-data">
-                          Mobile
-                      </div>
-                    </div>
-                  </div>
+
                   <!-- mobile end-->
                   <!-- insurance start-->
                   <div ng-switch-when="insurance">

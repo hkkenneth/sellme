@@ -75,7 +75,7 @@ function CaseNewCtrl($scope, $location, Case) {
     var mobileItem = $scope.mobileSubItem;
     console.log(mobileItem);
     caseItem.casetype = 'mobile';
-    caseItem.casetitle = 'Mobile Service Plan for user';
+    caseItem.casetitle = 'Mobile Service Plan';
     var verifyResult = generalCheck(caseItem);
     if (verifyResult) {
       caseItem.mobilecontent = mobileItem;
