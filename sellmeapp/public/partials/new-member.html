@@ -1,0 +1,31 @@
+        <div class="page-header">
+          <h1>Sign Up</h1>
+        </div>
+        <!--  class="form-horizontal" -->
+        <form role="form" ng-submit="createMember()">
+          <!-- user name -->
+          <div class="form-group">
+            <label for="jsid-member-userid">User name</label>
+            <input type="text" ng-model="memberItem.userid" class="form-control" id="jsid-member-userid" placeholder="Enter a user name consisting of alphabet and numbers only">
+          </div>
+          <!-- password -->
+          <!-- client type -->
+          <div class="form-group">
+            <label for="jsid-member-usertype">Type</label>
+            <select class="form-control" ng-model="memberItem.usertype" id="jsid-member-usertype">
+              <option value="sales">Salesperson</option>
+              <option value="customer">Customer</option>
+            </select>
+          </div>
+          
+          <p><hr></p>
+          <div class="row">
+            <div class="col-xs-6">
+              <a href="/homepage" class="btn btn-default" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+            </div>
+            <div class="col-xs-6">
+              <button class="btn btn-primary pull-right" type="submit">	Continue &raquo;</button>
+            </div>
+          </div>
+          <p>&nbsp;</p>
+        </form>

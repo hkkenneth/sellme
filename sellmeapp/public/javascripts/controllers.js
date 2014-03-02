@@ -73,6 +73,7 @@ function CaseNewCtrl($scope, $location, Case) {
   $scope.createMobileCase = function() {
     var caseItem = $scope.caseItem;
     var mobileItem = $scope.mobileSubItem;
+    console.log(mobileItem);
     caseItem.casetype = 'mobile';
     caseItem.casetitle = 'Mobile Service Plan for user';
     var verifyResult = generalCheck(caseItem);
@@ -89,20 +90,45 @@ function CaseNewCtrl($scope, $location, Case) {
       });
     }
   };
+}
 
-  $scope.createCase = function() {
-    var caseItem = $scope.caseItem;
-    var verifyResult = generalCheck(caseItem);
-    if  (verifyResult) {
-        var newCase = new Case(caseItem);
-        newCase.$save(function(p, resp) {
-          if(!p.error) {
-            // redirect to list?
-            $location.path('list');
-          } else {
-            alert('Could not create the case');
-          }
-        });
+
+function generalMemberCheck(memberItem) {
+  return ((memberItem.userid.length != 0)
+    && (memberItem.password.length != 0)
+    && (memberItem.displayname.length != 0));
+}
+
+// Creating a new member
+function MemberNewCtrl($scope, $location, Member) {
+  // Template of a member
+  $scope.memberItem = {
+      userid: ''
+    , usertype: 'customer'
+  };
+
+  $scope.salesSubItem = {
+
+  };
+
+  $scope.createMember = function() {
+    var memberItem = $scope.memberItem;
+    var salesSubItem = $scope.salesSubItem;
+    var verifyResult = generalMemberCheck(memberItem);
+    if (verifyResult) {
+      if ( memberItem.usertype == 'sales') {
+        memberItem.salesinfo = salesSubItem;
+      }
+
+      var newMember = new Member(memberItem);
+      newMember.$save(function(p, resp) {
+        if(!p.error) {
+          // redirect to list?
+          $location.path('list');
+        } else {
+          alert('Could not create the member');
+        }
+      });
     }
   };
 }
