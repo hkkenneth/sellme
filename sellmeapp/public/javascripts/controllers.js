@@ -30,10 +30,10 @@ function CaseNewCtrl($scope, $location, Case) {
 
   $scope.mobileSubItem = {
     clientType: 'personal'
-    , serviceType: ''
-    , planType: ''
-    , voiceMinutes: 'minute1'
-    , dataVolume: 'data1'
+    , serviceType: 'x'
+    , planType: 'x'
+    , voiceMinutes: 'minute3'
+    , dataVolume: 'data3'
     , deviceCounts: 1
   };
 
@@ -53,7 +53,6 @@ function CaseNewCtrl($scope, $location, Case) {
   $scope.createInsuranceCase = function() {
     var caseItem = $scope.caseItem;
     var insuranceItem = $scope.insuranceSubItem;
-    console.log('insurance item');
     caseItem.casetype = 'insurance';
     caseItem.casetitle = 'Travel Insurance for x days';
     var verifyResult = generalCheck(caseItem);
@@ -63,8 +62,6 @@ function CaseNewCtrl($scope, $location, Case) {
       newCase.$save(function(p, resp) {
         if(!p.error) {
           // redirect to list?
-          console.log(p);
-          console.log(resp);
           $location.path('list');
         } else {
           alert('Could not create the case');

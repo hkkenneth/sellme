@@ -315,9 +315,9 @@ hr {
 	overflow: hidden;
 	background: #202020;
 	padding: 2em 0px 2em 0px;
-	position: absolute;
+	/*position: absolute;
 	width: 100%;
-	bottom: 0;
+	bottom: 0;*/
 }
 
 #mau-footer p {

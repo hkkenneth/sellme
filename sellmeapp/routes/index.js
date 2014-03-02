@@ -120,7 +120,6 @@ exports.createCase = function(req, res) {
     if(err || !doc) {
       res.json({error: true});
     } else {
-      console.log(doc);
       res.json(doc);
     }
   });
