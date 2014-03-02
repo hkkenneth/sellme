@@ -8,6 +8,7 @@ angular.module('sellmeapp', ['caseServices'])
       when('/new/mobile', { templateUrl: 'partials/new-mobile.html', controller: CaseNewCtrl }).
       when('/new/boardband', { templateUrl: 'partials/new.html', controller: CaseNewCtrl }).
       when('/new/other', { templateUrl: 'partials/new.html', controller: CaseNewCtrl }).
+      when('/box', { templateUrl: 'partials/box.html', controller: CaseListCtrl }).
       when('/member/new', { templateUrl: 'partials/new-member.html', controller: MemberNewCtrl }).
       otherwise({ redirectTo: '/list' });
   }]);

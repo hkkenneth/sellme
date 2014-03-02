@@ -13,10 +13,106 @@
             <li><em>No cases in database. Would you like to <a href="#/new">create one</a>?</li>
           </ul>
           <!-- loop -->
-          <ul ng-switch-default>
-            <li ng-repeat="caseItem in caseItems | filter:query">
-              <a href="#/case/{{caseItem._id}}">{{caseItem.casetype}}: {{caseItem.casetitle}} (by user: {{caseItem.userid}} )</a>
-            </li>
-          </ul>
+          <div id='list-of-boxes' ng-switch-default>
+            <div class="info-box" ng-repeat="caseItem in caseItems | filter:query">
+              <!-- {{caseItem.casetype}}:  -->
+              <h3>{{caseItem.casetitle}}</h3>
+              <!-- Switch by type -->
+              <div ng-switch on="caseItem.casetype">
+                <!-- mobile start-->
+                <div ng-switch-when="mobile">
+                  <div class="info-box-row">
+                    <div class="info-home-row-icon">
+                    </div>
+                    <div class="info-box-row-data">
+                        Mobile
+                    </div>
+                  </div>
+                </div>
+                <!-- mobile end-->
+                <!-- insurance start-->
+                <div ng-switch-when="insurance">
+                  <div class="info-box-row">
+                    <div class="info-home-row-icon">
+                    </div>
+                    <div class="info-box-row-data">
+                      <span ng-switch on="caseItem.insurancecontent[0].destination">
+                        <span ng-switch-when="destChina">Macau/China/Taiwan</span>
+                        <span ng-switch-when="destAsia">Asian Countries</span>
+                        <span ng-switch-when="destUSA">USA</span>
+                        <span ng-switch-when="destOther">Other parts of the world</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="info-box-row">
+                    <div class="info-home-row-icon">
+                    </div>
+                    <div class="info-box-row-data">
+                        {{caseItem.insurancecontent[0].datestr}}
+                    </div>
+                  </div>
+
+                  <div class="info-box-row">
+                    <div class="info-home-row-icon">
+                    </div>
+                    <div class="info-box-row-data">
+                      <span ng-switch on="caseItem.insurancecontent[0].triptype">
+                        <span ng-switch-when="typeSelf">Self</span>
+                        <span ng-switch-when="typeGroup">Group Tour</span>
+                        <span ng-switch-when="typeCruise">Cruise</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- insurance end-->
+              </div>
+              <!-- Read more div -->
+              <div class="info-box-read-row" id="{{caseItem._id}}_hidden_read" onclick="mauShowBox(this);">
+                <div class="info-box-row-read">
+                    Read More...
+                </div>
+              </div>
+
+              <div class="mau-hidden" id="{{caseItem._id}}_hidden">
+                <!-- Switch by type -->
+                <div ng-switch on="caseItem.casetype">
+                  <!-- mobile start-->
+                  <div ng-switch-when="mobile">
+                    <div class="info-box-row">
+                      <div class="info-home-row-icon">
+                      </div>
+                      <div class="info-box-row-data">
+                          Mobile
+                      </div>
+                    </div>
+                  </div>
+                  <!-- mobile end-->
+                  <!-- insurance start-->
+                  <div ng-switch-when="insurance">
+
+                    <div class="info-box-row">
+                      <div class="info-home-row-icon">
+                      </div>
+                      <div class="info-box-row-data">
+                          {{caseItem.insurancecontent[0].adultcount}} Adults
+                      </div>
+                    </div>
+
+                    <div class="info-box-row">
+                      <div class="info-home-row-icon">
+                      </div>
+                      <div class="info-box-row-data">
+                          {{caseItem.insurancecontent[0].childcount}} Children
+                      </div>
+                    </div>
+                  </div>
+                  <!-- insurance end-->
+                </div>
+              </div>
+            </div>
+            <!-- end of info-box -->
+          </div>
+          <!-- end of loop -->
         </div>
         <p>&nbsp;</p>

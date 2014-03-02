@@ -54,7 +54,7 @@ function CaseNewCtrl($scope, $location, Case) {
     var caseItem = $scope.caseItem;
     var insuranceItem = $scope.insuranceSubItem;
     caseItem.casetype = 'insurance';
-    caseItem.casetitle = 'Travel Insurance for x days';
+    caseItem.casetitle = 'Travel Insurance';
     var verifyResult = generalCheck(caseItem);
     if (verifyResult) {
       caseItem.insurancecontent = insuranceItem;
